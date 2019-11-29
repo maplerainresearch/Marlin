@@ -33,9 +33,8 @@
   "Oops! Select an ESP32 board in 'Tools > Board.'"
 #endif
 
-#ifndef BOARD_NAME
-  #define BOARD_NAME "MRR ESPE"
-#endif
+#define BOARD_INFO_NAME "MRR ESPE"
+#define BOARD_WEBSITE_URL "github.com/maplerainresearch/MRR_ESPA"
 
 //
 // Limit Switches
@@ -51,9 +50,9 @@
   #define I2S_STEPPER_STREAM
 #endif
 
-#define I2S_WS              26 // 16
-#define I2S_BCK             25 // 0
-#define I2S_DATA            27 // 17
+#define I2S_WS              26
+#define I2S_BCK             25
+#define I2S_DATA            27
 
 #ifdef LIN_ADVANCE
   #undef LIN_ADVANCE  // Currently, I2S stream does not work with linear advance
@@ -85,8 +84,12 @@
 #define E1_STEP_PIN        141
 #define E2_DIR_PIN         142
 #define E3_ENABLE_PIN      140
-//#define E0_CS_PIN          27
+//#define E0_CS_PIN          22
 
+#define Z2_STEP_PIN        141
+#define Z2_DIR_PIN         142
+#define Z2_ENABLE_PIN      140
+//#define Z2_CS_PIN            5
 
 //
 // Temperature Sensors
@@ -99,12 +102,12 @@
 // Heaters / Fans
 //
 #define HEATER_0_PIN       145 // 2
-#define FAN_PIN            146 // 27
+#define FAN_PIN            146 // 15
 #define HEATER_BED_PIN     144 // 4
 
 #define CONTROLLER_FAN_PIN 147
-#define E0_AUTO_FAN_PIN 148
-//#define E1_AUTO_FAN_PIN 149
+//#define E0_AUTO_FAN_PIN 148 // need to update Configuration_adv.h @section extruder 
+//#define E1_AUTO_FAN_PIN 149 // need to update Configuration_adv.h @section extruder 
 #define FAN1_PIN 149
 
 //
@@ -113,7 +116,6 @@
 #define MOSI_PIN           23
 #define MISO_PIN           19
 #define SCK_PIN            18
-#define SS_PIN              5
 #define SDSS                5
 
 //////////////////////////
@@ -125,18 +127,18 @@
 // LCD Display output pins
 //
 #if ENABLED(CR10_STOCKDISPLAY)
-  #define LCD_PINS_RS         13 // 26
-  #define LCD_PINS_ENABLE     17 // 25
-  #define LCD_PINS_D4         16 // 15
+  #define LCD_PINS_RS         13
+  #define LCD_PINS_ENABLE     17
+  #define LCD_PINS_D4         16
   #define BEEPER_PIN          152
 
 #elif ENABLED(REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER)
-  #define LCD_PINS_RS         13 // 26
-  #define LCD_PINS_ENABLE     17 //25
-  #define LCD_PINS_D4         16 // 15
-  //#define LCD_PINS_D5         141
-  //#define LCD_PINS_D6         142
-  //#define LCD_PINS_D7         143
+  #define LCD_PINS_RS         13
+  #define LCD_PINS_ENABLE     17
+  #define LCD_PINS_D4         16
+  //#define LCD_PINS_D5         150
+  //#define LCD_PINS_D6         151
+  //#define LCD_PINS_D7         153
   #define BEEPER_PIN          152
 
 #endif
@@ -145,14 +147,14 @@
 // LCD Display input pins
 //
 #if ENABLED(CR10_STOCKDISPLAY)
-  #define BTN_EN1             0 // 12
-  #define BTN_EN2             12 // 14
-  #define BTN_ENC             14 // 13
+  #define BTN_EN1             0
+  #define BTN_EN2             12
+  #define BTN_ENC             14
   #define REVERSE_MENU_DIRECTION
 
 #elif ENABLED(REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER)
-  #define BTN_EN1             0 // 12
-  #define BTN_EN2             12 // 14
-  #define BTN_ENC             14 // 13
+  #define BTN_EN1             0
+  #define BTN_EN2             12
+  #define BTN_ENC             14
 
 #endif

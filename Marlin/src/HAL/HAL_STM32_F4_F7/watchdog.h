@@ -19,16 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
-#ifndef WATCHDOG_ESP32_H
-#define WATCHDOG_ESP32_H
-#ifdef __cplusplus
-extern "C" {
-#endif
-esp_err_t esp_task_wdt_reset();
-#ifdef __cplusplus
-}
-#endif
+#pragma once
 
 extern IWDG_HandleTypeDef hiwdg;
 

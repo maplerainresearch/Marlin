@@ -53,7 +53,7 @@ bool ESP_SD::isopen(){
 }
 
 int8_t ESP_SD::card_status(){
-if (!IS_SD_INSERTED() || !card.isDetected()) return 0; //No sd
+if (!IS_SD_INSERTED() || !card.isMounted()) return 0; //No sd
 if ( card.isPrinting() || card.isFileOpen() ) return -1; // busy
 return 1; //ok
 }
@@ -241,10 +241,9 @@ uint32_t ESP_SD::card_used_space(){
 
 bool ESP_SD::openDir(String path){
     static SdFile root;
-    static 
-    String name;
+    static String name;
     int index = 0;
-    SdFile *parent;
+    //SdFile *parent;
     if(root.isOpen())root.close();
     if (!sd_volume.init(&(card.getSd2Card()))) {
         return false;
@@ -254,7 +253,7 @@ bool ESP_SD::openDir(String path){
     }
     root.rewind();
     workDir = root;
-    parent = &workDir;
+    //parent = &workDir;
     name = get_path_part(path,index);
     while ((name.length() > 0) && (name!="/")) {
         SdFile newDir;
@@ -262,7 +261,7 @@ bool ESP_SD::openDir(String path){
             return false;
             }
          workDir=newDir;
-         parent = &workDir;
+         //parent = &workDir;
          index++;
          if (index > MAX_DIR_DEPTH) {
             return false;

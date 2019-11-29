@@ -19,9 +19,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+#pragma once
 
-#ifndef WATCHDOG_ESP32_H
-#define WATCHDOG_ESP32_H
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -34,4 +33,4 @@ esp_err_t esp_task_wdt_reset();
 void watchdog_init();
 
 // Reset watchdog.
-inline void HAL_watchdog_refresh() {}
+inline void HAL_watchdog_refresh() { esp_task_wdt_reset();}

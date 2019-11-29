@@ -70,6 +70,7 @@ bool Serial_2_Socket::attachWS(void * web_socket){
 
 bool Serial_2_Socket::detachWS(){
      _web_socket = NULL;
+     return true;
 }
 
 Serial_2_Socket::operator bool() const

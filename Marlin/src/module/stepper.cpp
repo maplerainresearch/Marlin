@@ -2229,21 +2229,34 @@ int32_t Stepper::position(const AxisEnum axis) {
 // be very careful here. If the interrupt being preempted was the
 // Stepper ISR (this CAN happen with the endstop limits ISR) then
 // when the stepper ISR resumes, we must be very sure that the movement
-// is properly canceled
+// is properly cancelled
+#ifdef ARDUINO_ARCH_ESP32 // avoid float operation on ESP32 during interrupts
+void IRAM_ATTR Stepper::endstop_triggered(const AxisEnum axis) {
+#else
 void Stepper::endstop_triggered(const AxisEnum axis) {
+#endif
 
   const bool was_enabled = STEPPER_ISR_ENABLED();
   if (was_enabled) DISABLE_STEPPER_DRIVER_INTERRUPT();
-  endstops_trigsteps[axis] = (
-    #if IS_CORE
-      (axis == CORE_AXIS_2
-        ? CORESIGN(count_position[CORE_AXIS_1] - count_position[CORE_AXIS_2])
-        : count_position[CORE_AXIS_1] + count_position[CORE_AXIS_2]
-      ) * 0.5f
-    #else // !IS_CORE
-      count_position[axis]
+
+  #if IS_CORE
+    #ifdef ARDUINO_ARCH_ESP32 // avoid float operation on ESP32 during interrupts
+    endstops_trigsteps[axis] = (
+      axis == CORE_AXIS_2 ? CORESIGN(count_position[CORE_AXIS_1] - count_position[CORE_AXIS_2])
+                          : count_position[CORE_AXIS_1] + count_position[CORE_AXIS_2]
+    ) / 2;
+    #else // non-ESP32 platforms use float operations during interrupts
+    endstops_trigsteps[axis] = 0.5f * (
+      axis == CORE_AXIS_2 ? CORESIGN(count_position[CORE_AXIS_1] - count_position[CORE_AXIS_2])
+                          : count_position[CORE_AXIS_1] + count_position[CORE_AXIS_2]
+    );
     #endif
-  );
+
+  #else // !COREXY && !COREXZ && !COREYZ
+
+    endstops_trigsteps[axis] = count_position[axis];
+
+  #endif // !COREXY && !COREXZ && !COREYZ
 
   // Discard the rest of the move if there is a current block
   quick_stop();
