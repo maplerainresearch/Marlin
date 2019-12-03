@@ -34,7 +34,7 @@
 #endif
 
 #define BOARD_INFO_NAME "MRR ESPE"
-#define BOARD_WEBSITE_URL "github.com/maplerainresearch/MRR_ESPA"
+#define BOARD_WEBSITE_URL "github.com/maplerainresearch/MRR_ESPE"
 
 //
 // Limit Switches
@@ -130,16 +130,16 @@
   #define LCD_PINS_RS         13
   #define LCD_PINS_ENABLE     17
   #define LCD_PINS_D4         16
-  #define BEEPER_PIN          152
+  #define BEEPER_PIN          151
 
 #elif ENABLED(REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER)
   #define LCD_PINS_RS         13
   #define LCD_PINS_ENABLE     17
   #define LCD_PINS_D4         16
   //#define LCD_PINS_D5         150
-  //#define LCD_PINS_D6         151
+  //#define LCD_PINS_D6         152
   //#define LCD_PINS_D7         153
-  #define BEEPER_PIN          152
+  #define BEEPER_PIN          151
 
 #endif
 
@@ -150,7 +150,6 @@
   #define BTN_EN1             0
   #define BTN_EN2             12
   #define BTN_ENC             14
-  #define REVERSE_MENU_DIRECTION
 
 #elif ENABLED(REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER)
   #define BTN_EN1             0
