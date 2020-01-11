@@ -1,5 +1,7 @@
 # Marlin 3D Printer Firmware with ESP3D WEBUI support
 
+## Note: luc-github has already pushed his fork to the main Marlin repository, and merged into Marlin 2.0. Once we have completed testing of the merge, this repository will be marked as obsolete, and users are advised to download directly from the main Marlin repository.
+
 [![Build Status](https://travis-ci.org/MarlinFirmware/Marlin.svg?branch=bugfix-2.0.x)](https://travis-ci.org/MarlinFirmware/Marlin)
 ![GitHub](https://img.shields.io/github/license/marlinfirmware/marlin.svg)
 ![GitHub contributors](https://img.shields.io/github/contributors/marlinfirmware/marlin.svg)
