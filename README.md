@@ -2,7 +2,7 @@
 
 ## Obsolete
 
-## luc-github has already pushed his fork to the main Marlin repository, and merged into Marlin 2.0. Please download directly from the main [Marlin repository](https://github.com/MarlinFirmware/Marlin). The latest changes will be in the bugfix-2.0.x branch. This repository will be left as an archive of the fork, and users are advised NOT to use this repository it is needed and you know what you are doing.
+## luc-github has already pushed his fork to the main Marlin repository, and merged into Marlin 2.0. Please download directly from the main [Marlin repository](https://github.com/MarlinFirmware/Marlin). The latest changes will be in the bugfix-2.0.x branch. This repository will be left as an archive of the fork, and users are advised NOT to use this repository unless needed and you know what you are doing.
 
 [![Build Status](https://travis-ci.org/MarlinFirmware/Marlin.svg?branch=bugfix-2.0.x)](https://travis-ci.org/MarlinFirmware/Marlin)
 ![GitHub](https://img.shields.io/github/license/marlinfirmware/marlin.svg)
